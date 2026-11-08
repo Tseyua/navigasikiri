@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Navigasi_Vertikal/stye_nav_ver.css">
+</head>
+
+<body>
+
+    <!-- Latar Belakang Hitam Transparan -->
+    <div class="overlay"></div>
+
+    <!-- header tambahan khusu Mobile -->
+    <div class="mobile-header">
+        <img src="Gambar/Gambar Anjing.jpg" alt="Logo">
+        <h2>Ayam Bakar Semenanjung</h2>
+    </div>
+
+    <!-- Tombol Hamburger -->
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="sidebar">
+
+        <!-- Bagian Logo & Judul -->
+         <div class="sidebar-header">
+            <div class="logo">
+                <img src="Gambar/Gambar Anjing.jpg" alt="Logo ">
+            </div>
+            <h2>Ayam Bakar Semenanjung</h2>
+         </div>
+        
+        <!-- Menu Navigasi -->
+        <ul class="nav-link">
+            <li><a href="#" class="nav-item">Beranda</a></li>
+
+            <!-- Menu dengan SubMenu -->
+            <li class="has-submenu">
+
+                <a href="#" class="nav-item catalog-toggle">Catalog
+                    <svg class="chevron" width="12" heigth="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+
+                <!-- Wrapper untuk animasi halus -->
+                <div class="submenu-wrapper">
+                    <ul class="submenu">
+                        <li><a href="#">Ayam Bakar</a></li>
+                        <li><a href="#">Bebek Bakar</a></li>
+                        <li><a href="#">Ikan Bakar</a></li>
+                        <li><a href="#">Sate Ayam</a></li>
+                        <li><a href="#">Sate Kambing</a></li>
+                        <li><a href="#">Soto</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li><a href="" class="nav-item">Pelayanan</a></li>
+            <li><a href="" class="nav-item">Tentang</a></li>
+            <li><a href="" class="nav-item">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <script src="nav_ver.js"></script>
+
+</body>
+
+</html>

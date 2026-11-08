@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: MADE Tommy Soft;
+}
+
+body {
+    background-color: bisque;
+}
+
+/* Sidebar Container */
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    background-color: brown;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.sidebar-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.logo img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+    background-color: white;
+    width: 100px;
+    height: 100px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* Navigasi Utama */
+.nav-link {
+    list-style: none;
+}
+
+.nav-link li {
+    margin-bottom: 5px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 10px 0;
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #f39c12; /* Warna Kuning/Orange saat di hover*/
+}
+
+/* ANIMASI SUBMENU HALUS (CSS Grid Trik) */
+.submenu-wrapper {
+    display: grid;
+    grid-template-rows: 0fr; /* Awalnya Tertutup Rapat */
+
+    transition: grid-template-rows 0.3s ease-in-out; /* Durasi animasi */
+
+}
+
+/* Class ini ankan ditambahkan oleh JavaScript saat diklik*/
+.submenu-wrapper.open {
+    grid-template-rows: 1fr; /* Membuka perlahan sesuai tinggi konten */
+}
+
+.submenu {
+    overflow: hidden; /* Wajib ada agar konten tidak bocor saat 0fr */
+    list-style: none;
+    padding-left: 15px; /* Identasi submenu */
+}
+
+/* item dalam submenu */
+.submenu li {
+    margin-top: 10px;
+}
+
+.submenu a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+
+    transition: color 0.2s ease;
+}
+
+.submenu a:hover {
+    color:  #f39c12;
+}
+
+/* ANIMASI ICON PANAH (CHEVRON) */
+.chevron {
+    transition: transform 0.3s ease-in-out;
+}
+
+.catalog-toggle.active .chevron {
+    transform: rotate(180deg); /* Memutar panah ke atas Saat Terbuka */
+}
+
+/* GAYA DEFAUT Tombol Hamburger */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    z-index: 1000;
+    background: brown ;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: wheat;
+    margin: 5px 0;
+    transition:  0.3s  ease-in-out;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Header Khusus Mobile */
+.mobile-header {
+    display: none;
+}
+
+/* TAMPILAN PADA MOBILE & TABLET */
+@media (max-width: 780px) {
+    .hamburger {
+        display: block;
+    }
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 999;
+
+        transform: translateX(-100%);
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .nav-item, .sidebar-header {
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+    .sidebar.show .nav-item, 
+    .sidebar.show .sidebar-header {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .sidebar.show .sidebar-header {transition-delay: 0.1s;}
+    .sidebar.show .nav-link > li:nth-child(1) .nav-item {transition-delay: 0.2s;}
+    .sidebar.show .nav-link > li:nth-child(2) .nav-item {transition-delay: 0.3s;}
+    .sidebar.show .nav-link > li:nth-child(3) .nav-item {transition-delay: 0.4s;}
+    .sidebar.show .nav-link > li:nth-child(4) .nav-item {transition-delay: 0.5s;}
+    .sidebar.show .nav-link > li:nth-child(5) .nav-item {transition-delay: 0.6s;}
+
+    /* animasi icon hamburger berubah menjadi X */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Memunculkan header Mobile */
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: bisque;
+        z-index: 997;
+        padding-left: 80px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .mobile-header img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        margin-right: 12px;
+        object-fit: cover;
+    }
+    .mobile-header h2 {
+        font-size: 1.1rem;
+        color: #5c1a1a;
+    }
+}
